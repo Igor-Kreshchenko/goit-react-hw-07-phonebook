@@ -5,6 +5,7 @@ import ContactItem from './ContactItem';
 import Loader from '../Loader';
 import styles from './ContactList.module.css';
 import { fetchContacts } from '../../redux/contacts/contacts-operations';
+import { getFilteredContacts, getIsLoading, getError } from '../../redux/contacts/contacts-selectors';
 
 class ContactList extends Component {
   componentDidMount() {
@@ -31,18 +32,10 @@ class ContactList extends Component {
   }
 }
 
-const filterContacts = (items, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-
-  return items.filter(item =>
-    item.name.toLowerCase().includes(normalizedFilter),
-  );
-};
-
-const mapStateToProps = ({ contacts: { items, filter, loading, error } }) => ({
-  contacts: filterContacts(items, filter),
-  isLoadingContacts: loading,
-  error,
+const mapStateToProps = (state) => ({
+  contacts: getFilteredContacts(state),
+  isLoadingContacts: getIsLoading(state),
+  error: getError(state),
 });
 
 const mapDispatchToProps = dispatch => ({

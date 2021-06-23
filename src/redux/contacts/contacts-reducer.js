@@ -24,7 +24,7 @@ const filterReducer = createReducer('', {
   [filterContacts]: (_, { payload }) => payload,
 });
 
-const loading = createReducer(false, {
+const loadingReducer = createReducer(false, {
   [fetchContactsRequest]: () => true,
   [fetchContactsSuccess]: () => false,
   [fetchContactsError]: () => false,
@@ -36,7 +36,7 @@ const loading = createReducer(false, {
   [deleteContactError]: () => false,
 });
 
-const error = createReducer(null, {
+const errorReducer = createReducer(null, {
   [fetchContactsRequest]: () => null,
   [fetchContactsError]: () => true,
   [addContactRequest]: () => null,
@@ -48,8 +48,8 @@ const error = createReducer(null, {
 const contactsReducer = combineReducers({
   items: itemsReducer,
   filter: filterReducer,
-  loading,
-  error,
+  loading: loadingReducer,
+  error: errorReducer,
 });
 
 export default contactsReducer;

@@ -7,7 +7,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
-import contactsReducer from './contacts/contacts-reducer';
+import { contactsReducer } from './contacts';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -22,5 +22,3 @@ export const store = configureStore({
   middleware,
   devTools: process.env.NODE_ENV === 'development',
 });
-
-// export const persistor = persistStore(store);
