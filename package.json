@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "api-server": "json-server --port 7777 -d 500 --watch db.json"
+    "api-server": "json-server --port 7777 -d 300 --watch db.json"
   },
   "eslintConfig": {
     "extends": [

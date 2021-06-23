@@ -38,11 +38,11 @@ const loading = createReducer(false, {
 
 const error = createReducer(null, {
   [fetchContactsRequest]: () => null,
-  [fetchContactsError]: (_, action) => action.payload,
+  [fetchContactsError]: () => true,
   [addContactRequest]: () => null,
-  [addContactError]: (_, action) => action.payload,
+  [addContactError]: () => true,
   [deleteContactRequest]: () => null,
-  [deleteContactError]: (_, action) => action.payload,
+  [deleteContactError]: () => true,
 });
 
 const contactsReducer = combineReducers({

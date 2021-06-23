@@ -12,11 +12,12 @@ class ContactList extends Component {
   }
 
   render() {
-    const contacts = this.props.contacts;
+    const { contacts, isLoadingContacts, error } = this.props;
 
     return (
       <>
-        {this.props.isLoadingContacts && <Loader />}
+        {isLoadingContacts && <Loader />}
+        {error && <h2>404 Not Found</h2>}
 
         <ul className={styles.list}>
           {contacts.map(contact => {
@@ -38,9 +39,10 @@ const filterContacts = (items, filter) => {
   );
 };
 
-const mapStateToProps = ({ contacts: { items, filter, loading } }) => ({
+const mapStateToProps = ({ contacts: { items, filter, loading, error } }) => ({
   contacts: filterContacts(items, filter),
   isLoadingContacts: loading,
+  error,
 });
 
 const mapDispatchToProps = dispatch => ({
